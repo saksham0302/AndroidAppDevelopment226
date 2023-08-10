@@ -9,8 +9,8 @@ import com.example.cse226_notes.R
 
 class RecyclerViewExample : AppCompatActivity() {
 
-    val list = mutableListOf<RecyclerViewDataModel>()
-    lateinit var myAdap: RecyclerViewAdapter
+    private val list = mutableListOf<RecyclerViewDataModel>()
+    private lateinit var myAdap: RecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

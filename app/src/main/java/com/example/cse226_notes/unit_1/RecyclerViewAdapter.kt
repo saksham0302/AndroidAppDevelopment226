@@ -8,7 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cse226_notes.R
 
-class RecyclerViewAdapter (var list: MutableList<RecyclerViewDataModel>): RecyclerView.Adapter<RecyclerViewAdapter.MyHolderDemo>() {
+class RecyclerViewAdapter (var list: MutableList<RecyclerViewDataModel>):
+    RecyclerView.Adapter<RecyclerViewAdapter.MyHolderDemo>() {
 
     class MyHolderDemo(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
