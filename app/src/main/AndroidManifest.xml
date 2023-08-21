@@ -12,7 +12,7 @@
         android:theme="@style/Theme.CSE226Notes"
         tools:targetApi="31">
         <activity
-            android:name=".unit_1.GridViewExample"
+            android:name=".unit_2.AsyncTaskExample"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,13 +21,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".unit_1.GridViewExample"
+            android:exported="false" />
+        <activity
             android:name=".unit_1.RecyclerViewExample"
             android:exported="false" />
         <activity
             android:name=".unit_1.CustomListViewExample"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="false" />
     </application>
 
