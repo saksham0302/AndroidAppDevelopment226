@@ -10,17 +10,17 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import com.example.cse226_notes.R
 
-class AsyncTaskExample : AppCompatActivity() {
+class AsyncTaskProgressBar : AppCompatActivity() {
 
     lateinit var progressBar: ProgressBar
-    private lateinit var listView: ListView
+    lateinit var listView: ListView
     var arr = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")
     lateinit var arrayAdapter: ArrayAdapter<String>
     lateinit var arrayList: ArrayList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_async_task_example)
+        setContentView(R.layout.activity_async_task_progress_bar)
 
         progressBar = findViewById(R.id.progressBar)
         listView = findViewById(R.id.listView)
@@ -32,7 +32,9 @@ class AsyncTaskExample : AppCompatActivity() {
     }
 
     internal inner class MyTaskDemo : AsyncTask<Void, Int?, String?>() {
-        private var count = 0
+
+        var count = 0
+
         override fun onPreExecute() {
             progressBar.max = 10
             progressBar.progress = 0
@@ -43,6 +45,7 @@ class AsyncTaskExample : AppCompatActivity() {
         override fun doInBackground(vararg p0: Void?): String? {
 
             for (i in 1..10) {
+
                 count += 1
                 publishProgress()
                 try {
@@ -66,7 +69,7 @@ class AsyncTaskExample : AppCompatActivity() {
         override fun onPostExecute(result: String?) {
 
             super.onPostExecute(result)
-            Toast.makeText(this@AsyncTaskExample, result, Toast.LENGTH_LONG).show()
+            Toast.makeText(this@AsyncTaskProgressBar, result, Toast.LENGTH_LONG).show()
             progressBar.visibility = View.INVISIBLE
         }
 

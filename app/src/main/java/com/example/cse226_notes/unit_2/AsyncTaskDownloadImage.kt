@@ -9,14 +9,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.ProgressBar
 import com.example.cse226_notes.R
 import java.io.IOException
 import java.io.InputStream
 import java.net.HttpURLConnection
 import java.net.URL
 
-class DownloadImage : AppCompatActivity() {
+class AsyncTaskDownloadImage : AppCompatActivity() {
 
     lateinit var imageURL: URL
     var `is`: InputStream? = null
@@ -27,7 +26,7 @@ class DownloadImage : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_download_image)
+        setContentView(R.layout.activity_async_task_download_image)
 
         download = findViewById(R.id.download)
         downloadImage = findViewById(R.id.downloadImage)
@@ -45,7 +44,7 @@ class DownloadImage : AppCompatActivity() {
 
         override fun onPreExecute() {
             super.onPreExecute()
-            progressDialog = ProgressDialog(this@DownloadImage)
+            progressDialog = ProgressDialog(this@AsyncTaskDownloadImage)
             progressDialog.setMessage("Please wait...It is downloading")
             progressDialog.setCancelable(false)
             progressDialog.show()
