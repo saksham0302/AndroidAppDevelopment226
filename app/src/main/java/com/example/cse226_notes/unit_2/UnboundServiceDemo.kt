@@ -5,6 +5,7 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.os.IBinder
 import android.provider.Settings
+import com.example.cse226_notes.R
 
 class UnboundServiceDemo : Service() {
 
@@ -12,7 +13,7 @@ class UnboundServiceDemo : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
-        mediaPlayer = MediaPlayer.create(this, Settings.System.DEFAULT_ALARM_ALERT_URI)
+        mediaPlayer = MediaPlayer.create(this, R.raw.drums)
         mediaPlayer.isLooping = true
         mediaPlayer.start()
 
@@ -27,5 +28,10 @@ class UnboundServiceDemo : Service() {
 
         mediaPlayer.stop()
         super.onDestroy()
+    }
+
+    override fun stopService(name: Intent?): Boolean {
+        return super.stopService(name)
+        //mediaPlayer.stop()  //Music stops immediately
     }
 }
