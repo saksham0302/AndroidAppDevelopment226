@@ -14,11 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CSE226Notes"
         tools:targetApi="31">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
 
-        <service android:name=".unit_2.ForegroundServiceDemo" />
+        <service android:name=".unit_2.BoundServiceDemo" />
 
         <activity
-            android:name=".unit_2.ForegroundServiceExample"
+            android:name=".unit_2.BoundServiceExample"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +29,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name=".unit_2.ForegroundServiceDemo" />
+
+        <activity
+            android:name=".unit_2.ForegroundServiceExample"
+            android:exported="true" />
+
 
         <service android:name=".unit_2.UnboundServiceDemo" />
 
