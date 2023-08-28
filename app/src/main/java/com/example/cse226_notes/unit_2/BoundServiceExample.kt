@@ -19,7 +19,7 @@ class BoundServiceExample : AppCompatActivity() {
     private lateinit var timeStampStop: Button
 
     private var mBoundService: BoundServiceDemo? = null
-    private var mServiceBound = true
+    private var mServiceBound = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,6 +76,7 @@ class BoundServiceExample : AppCompatActivity() {
 
             val myBinder: BoundServiceDemo.MyBinder = service as BoundServiceDemo.MyBinder
             mBoundService = myBinder.getService()
+            mServiceBound = true
         }
     }
 }
