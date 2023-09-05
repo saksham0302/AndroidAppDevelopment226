@@ -1,7 +1,6 @@
 package com.example.cse226_notes.unit_2
 
 import android.os.AsyncTask
-import android.os.Binder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
