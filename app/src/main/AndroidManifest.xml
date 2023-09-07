@@ -20,7 +20,10 @@
         android:theme="@style/Theme.CSE226Notes"
         tools:targetApi="31">
         <activity
-            android:name=".unit_2.BroadcastReceiverBatteryStatusExample"
+            android:name=".unit_3.FloatingActionButtonExample"
+            android:exported="false" />
+        <activity
+            android:name=".unit_3.VideoViewExample"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,11 +32,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".unit_2.BroadcastReceiverBatteryStatusExample"
+            android:exported="false" />
+        <activity
             android:name=".unit_2.BroadcastReceiverWifiStateExample"
             android:exported="false" />
         <activity
             android:name=".unit_2.BroadcastReceiverAirplaneModeExample"
-            android:exported="true" />
+            android:exported="false" />
 
         <receiver android:name=".unit_2.JobServiceBroadcastReceiver" />
 
@@ -44,40 +50,40 @@
 
         <activity
             android:name=".unit_2.JobServiceExample"
-            android:exported="true" />
+            android:exported="false" />
 
         <service android:name=".unit_2.BoundServiceDemo" />
 
         <activity
             android:name=".unit_2.BoundServiceExample"
-            android:exported="true" />
+            android:exported="false" />
 
         <service android:name=".unit_2.ForegroundServiceDemo" />
 
         <activity
             android:name=".unit_2.ForegroundServiceExample"
-            android:exported="true" />
+            android:exported="false" />
 
         <service android:name=".unit_2.UnboundServiceDemo" />
 
         <activity
             android:name=".unit_2.UnboundServiceExample"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".unit_2.AsyncTaskDownloadImage"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".unit_2.AsyncTaskProgressBar"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".unit_1.GridViewExample"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".unit_1.RecyclerViewExample"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".unit_1.CustomListViewExample"
-            android:exported="true" />
+            android:exported="false" />
     </application>
 
 </manifest>
