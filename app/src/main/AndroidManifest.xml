@@ -20,10 +20,7 @@
         android:theme="@style/Theme.CSE226Notes"
         tools:targetApi="31">
         <activity
-            android:name=".unit_3.FloatingActionButtonExample"
-            android:exported="false" />
-        <activity
-            android:name=".unit_3.VideoViewExample"
+            android:name=".unit_3.FloatingActionButtonBottomNavigationBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,6 +28,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".unit_3.FloatingActionButtonExample"
+            android:exported="false" />
+        <activity
+            android:name=".unit_3.VideoViewExample"
+            android:exported="false" />
         <activity
             android:name=".unit_2.BroadcastReceiverBatteryStatusExample"
             android:exported="false" />
