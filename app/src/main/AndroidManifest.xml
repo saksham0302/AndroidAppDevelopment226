@@ -20,7 +20,7 @@
         android:theme="@style/Theme.CSE226Notes"
         tools:targetApi="31">
         <activity
-            android:name=".unit_3.FloatingActionButtonBottomNavigationBar"
+            android:name=".unit_3.CardViewExample"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +28,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".unit_3.FloatingActionButtonBottomNavigationBar"
+            android:exported="false" />
         <activity
             android:name=".unit_3.FloatingActionButtonExample"
             android:exported="false" />
