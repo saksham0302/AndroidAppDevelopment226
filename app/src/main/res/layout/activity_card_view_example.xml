@@ -6,26 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".unit_3.CardViewExample">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:orientation="vertical"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="UselessParent">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="5dp"
-            android:src="@drawable/baseline_add_24"
-            android:contentDescription="ADD" />
-
-    </RelativeLayout>
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
@@ -65,6 +45,7 @@
                 android:layout_marginBottom="5dp" />
 
             <EditText
+                android:id="@+id/personName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
@@ -85,6 +66,7 @@
                 android:layout_marginBottom="5dp" />
 
             <EditText
+                android:id="@+id/personContact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -105,5 +87,32 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="25dp"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="UselessParent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:src="@drawable/baseline_add_24"
+            android:contentDescription="ADD" />
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
