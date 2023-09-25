@@ -19,7 +19,7 @@ class CardViewExample : AppCompatActivity() {
     private var list = ArrayList<CardRecyclerViewDataModel>()
     private lateinit var myAdap: CardRecyclerViewAdapter
     private lateinit var gridView: RecyclerView
-    private lateinit var personName: EditText
+    private lateinit var contactName: EditText
     private lateinit var personContact: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,41 +30,44 @@ class CardViewExample : AppCompatActivity() {
         cardView = findViewById(R.id.cardView)
         saveBtn = findViewById(R.id.saveButton)
 
-        personName = findViewById(R.id.personName)
+        contactName = findViewById(R.id.contactName)
         personContact = findViewById(R.id.personContact)
 
         gridView = findViewById(R.id.recyclerView)
         gridView.setHasFixedSize(true)
-        list = ArrayList<CardRecyclerViewDataModel>()
 
         add.setOnClickListener {
 
             cardView.visibility = View.VISIBLE
             add.hide()
             gridView.visibility = View.GONE
+            
+            contactName.text.clear()
+            personContact.text.clear()
         }
+
+        val gridLayoutManager = GridLayoutManager(this, 2)
+        gridLayoutManager.orientation = RecyclerView.VERTICAL
+        gridView.layoutManager = gridLayoutManager
+        myAdap = CardRecyclerViewAdapter(this, list)
+        gridView.adapter = myAdap
+        var count = 0
 
         saveBtn.setOnClickListener {
 
-            val name = personName.text
-            val contact = personContact.text
             list.add(
                 CardRecyclerViewDataModel(
-                    name,
+                    contactName.text,
                     R.drawable.baseline_perm_contact_calendar_24,
-                    contact
+                    personContact.text
                 )
             )
-            val gridLayoutManager = GridLayoutManager(this, 2)
-            gridLayoutManager.orientation = RecyclerView.VERTICAL
-            gridView.layoutManager = gridLayoutManager
-            myAdap = CardRecyclerViewAdapter(this, list)
-            gridView.adapter = myAdap
+            myAdap.notifyItemInserted(count)
+            count++
+
             cardView.visibility = View.GONE
             add.show()
             gridView.visibility = View.VISIBLE
-            personName.text.clear()
-            personContact.text.clear()
         }
     }
 }

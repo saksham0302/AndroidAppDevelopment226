@@ -45,7 +45,7 @@
                 android:layout_marginBottom="5dp" />
 
             <EditText
-                android:id="@+id/personName"
+                android:id="@+id/contactName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
@@ -53,7 +53,9 @@
                 android:layout_marginBottom="20dp"
                 android:background="@null"
                 android:textColor="@color/white"
-                android:hint="Enter name" />
+                android:hint="Enter name"
+                android:inputType="textPersonName"
+                android:maxLines="1" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -73,7 +75,10 @@
                 android:textSize="25sp"
                 android:layout_marginHorizontal="10dp"
                 android:textColor="@color/white"
-                android:hint="Enter number" />
+                android:hint="Enter number"
+                android:digits="1234567890"
+                android:maxLength="10"
+                android:inputType="number" />
 
             <Button
                 android:id="@+id/saveButton"
