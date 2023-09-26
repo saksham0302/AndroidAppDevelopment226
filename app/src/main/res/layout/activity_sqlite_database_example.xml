@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".unit_4.SQLiteDatabaseExample">
+
+    <EditText
+        android:id="@+id/EtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:inputType="textPersonName"
+        android:textSize="20sp"
+        android:hint="Enter Name" />
+
+    <EditText
+        android:id="@+id/EtAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:inputType="number"
+        android:textSize="20sp"
+        android:hint="Enter Age" />
+
+    <Button
+        android:id="@+id/submitName"
+        android:layout_gravity="center"
+        android:layout_margin="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:text="Add Data" />
+
+    <Button
+        android:id="@+id/submitAge"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:text="Fetch Data" />
+
+
+    <TextView
+        android:layout_gravity="center"
+        android:layout_margin="30dp"
+        android:id="@+id/displayName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Name" />
+
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/displayAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Age" />
+
+</LinearLayout>
