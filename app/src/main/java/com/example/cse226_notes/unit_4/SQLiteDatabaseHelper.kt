@@ -26,10 +26,10 @@ class SQLiteDatabaseHelper(context: Context, factory: SQLiteDatabase.CursorFacto
         private const val ID_COL = "id"
 
         //column name
-        private const val NAME_COL = "name"
+        const val NAME_COL = "name"
 
         //column age
-        private const val AGE_COL = "age"
+        const val AGE_COL = "age"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -69,11 +69,20 @@ class SQLiteDatabaseHelper(context: Context, factory: SQLiteDatabase.CursorFacto
         db.close()
     }
 
+    fun updateData(name: String, age: String) {
+
+        val db = this.writableDatabase
+        db.execSQL("UPDATE $TABLE_NAME SET $AGE_COL = '$age' WHERE $NAME_COL = '$name'")
+
+        //closing the database
+        db.close()
+    }
+
     fun getData(): Cursor? {
 
         val db = this.readableDatabase
 
         //returning a cursor to read data from the database
-        return db.rawQuery("SELECT * FROM $TABLE_NAME", null)
+        return db.rawQuery("SELECT * FROM $TABLE_NAME WHERE $AGE_COL > 50", null)
     }
 }
