@@ -23,13 +23,16 @@ class SQLiteDatabaseHelper(context: Context, factory: SQLiteDatabase.CursorFacto
         private const val TABLE_NAME = "my_Table1"
 
         //column id
-        private const val ID_COL = "id"
+        const val ID_COL = "id"
 
         //column name
         const val NAME_COL = "name"
 
         //column age
         const val AGE_COL = "age"
+
+        //column salary
+        const val SALARY_COL = "salary"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -38,7 +41,8 @@ class SQLiteDatabaseHelper(context: Context, factory: SQLiteDatabase.CursorFacto
         val query = ("CREATE TABLE " + TABLE_NAME + " ("
                 + ID_COL + " INTEGER PRIMARY KEY, " +
                 NAME_COL + " TEXT, " +
-                AGE_COL + " TEXT)")
+                AGE_COL + " TEXT, " +
+                SALARY_COL + "TEXT)")
 
         //method for executing query
         db.execSQL(query)
@@ -52,13 +56,15 @@ class SQLiteDatabaseHelper(context: Context, factory: SQLiteDatabase.CursorFacto
     }
 
     //function to add data to table
-    fun addData(name: String, age: String) {
+    fun addData(id: String, name: String, age: String, salary: String) {
 
         val values = ContentValues()
 
         //inserting the values in key value pair
+        values.put(ID_COL, id)
         values.put(NAME_COL, name)
         values.put(AGE_COL, age)
+        values.put(SALARY_COL, salary)
 
         //creating a writable variable of database as we want to insert value in our database
         val db = this.writableDatabase
@@ -69,10 +75,16 @@ class SQLiteDatabaseHelper(context: Context, factory: SQLiteDatabase.CursorFacto
         db.close()
     }
 
-    fun updateData(name: String, age: String) {
+    fun updateData(id: String, name: String, age: String, salary: String) {
 
         val db = this.writableDatabase
-        db.execSQL("UPDATE $TABLE_NAME SET $AGE_COL = '$age' WHERE $NAME_COL = '$name'")
+        val values = ContentValues()
+
+        values.put(ID_COL, id)
+        values.put(NAME_COL, name)
+        values.put(AGE_COL, age)
+        values.put(SALARY_COL, salary)
+        db.update(TABLE_NAME, values, "ID=?", arrayOf(id))
 
         //closing the database
         db.close()
@@ -83,6 +95,13 @@ class SQLiteDatabaseHelper(context: Context, factory: SQLiteDatabase.CursorFacto
         val db = this.readableDatabase
 
         //returning a cursor to read data from the database
-        return db.rawQuery("SELECT * FROM $TABLE_NAME WHERE $AGE_COL > 50", null)
+        return db.rawQuery("SELECT * FROM $TABLE_NAME", null)
+    }
+
+    fun deleteData(id: String) {
+
+        val db = this.readableDatabase
+        db.delete(TABLE_NAME, "ID=?", arrayOf(id))
+        db.close()
     }
 }
