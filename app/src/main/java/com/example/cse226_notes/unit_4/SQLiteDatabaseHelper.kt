@@ -38,11 +38,8 @@ class SQLiteDatabaseHelper(context: Context, factory: SQLiteDatabase.CursorFacto
     override fun onCreate(db: SQLiteDatabase) {
 
         // SQLITE query with column names and its data type
-        val query = ("CREATE TABLE " + TABLE_NAME + " ("
-                + ID_COL + " INTEGER PRIMARY KEY, " +
-                NAME_COL + " TEXT, " +
-                AGE_COL + " TEXT, " +
-                SALARY_COL + "TEXT)")
+        val query = ("CREATE TABLE $TABLE_NAME" +
+                "($ID_COL TEXT, $NAME_COL TEXT, $AGE_COL TEXT, $SALARY_COL TEXT)")
 
         //method for executing query
         db.execSQL(query)
@@ -100,7 +97,7 @@ class SQLiteDatabaseHelper(context: Context, factory: SQLiteDatabase.CursorFacto
 
     fun deleteData(id: String) {
 
-        val db = this.readableDatabase
+        val db = this.writableDatabase
         db.delete(TABLE_NAME, "ID=?", arrayOf(id))
         db.close()
     }

@@ -20,6 +20,9 @@
         android:theme="@style/Theme.CSE226Notes"
         tools:targetApi="31">
         <activity
+            android:name=".unit_4.RoomDatabaseExample"
+            android:exported="false" />
+        <activity
             android:name=".unit_4.SQLiteDatabaseExample"
             android:exported="true">
             <intent-filter>

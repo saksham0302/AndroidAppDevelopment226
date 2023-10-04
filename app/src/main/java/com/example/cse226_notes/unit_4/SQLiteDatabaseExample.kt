@@ -99,7 +99,12 @@ class SQLiteDatabaseExample : AppCompatActivity() {
     }
 
     @SuppressLint("Range")
-    fun displayData(getId: TextView, getName: TextView, getAge: TextView, getSalary: TextView) {
+    private fun displayData(
+        getId: TextView,
+        getName: TextView,
+        getAge: TextView,
+        getSalary: TextView
+    ) {
 
         val db = SQLiteDatabaseHelper(this, null)
 
