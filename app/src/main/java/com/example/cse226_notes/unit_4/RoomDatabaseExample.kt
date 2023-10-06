@@ -32,13 +32,16 @@ class RoomDatabaseExample : AppCompatActivity() {
             RoomDatabaseDemo::class.java, "contact"
         ).build()
 
-        listView = findViewById(R.id.listView)
-        listView.setOnItemLongClickListener { parent, _, position, _ ->
+        listView = findViewById(R.id.listView1)
+        listView.setOnItemLongClickListener { parent, view, position, id ->
 
             val view = parent[position]
             val id = view.findViewById<TextView>(R.id.idListItem).text.toString().toLong()
             val name = view.findViewById<TextView>(R.id.nameListItem).text.toString()
             val phone = view.findViewById<TextView>(R.id.noListItem).text.toString()
+
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Edit")
 
             val linearLayout = LinearLayout(this)
             linearLayout.orientation = LinearLayout.VERTICAL
@@ -52,10 +55,8 @@ class RoomDatabaseExample : AppCompatActivity() {
             phoneView.setText(phone)
             linearLayout.addView(phoneView)
 
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Edit")
             builder.setView(linearLayout)
-            builder.setPositiveButton("Update", DialogInterface.OnClickListener {
+            builder.setPositiveButton("Edit", DialogInterface.OnClickListener {
 
                     dialog, which ->
                 val updateName = nameView.text.toString()
@@ -73,6 +74,7 @@ class RoomDatabaseExample : AppCompatActivity() {
                     dialog, which ->
                 dialog.cancel()
             })
+            builder.show()
 
             return@setOnItemLongClickListener true
         }
@@ -86,13 +88,13 @@ class RoomDatabaseExample : AppCompatActivity() {
         val add = findViewById<Button>(R.id.add)
         add.setOnClickListener {
 
-            val id = findViewById<EditText>(R.id.id)
-            val name = findViewById<EditText>(R.id.name)
-            val contact = findViewById<EditText>(R.id.contact)
+            val id = findViewById<EditText>(R.id.id).text.toString().toLong()
+            val name = findViewById<EditText>(R.id.name).text.toString()
+            val contact = findViewById<EditText>(R.id.contact).text.toString()
             GlobalScope.launch {
                 database.RoomDatabaseDao().insert(
                     RoomDatabaseContact(
-                        id.text.toString().toLong(), name.text.toString(), contact.text.toString()
+                        id, name, contact
                     )
                 )
             }
