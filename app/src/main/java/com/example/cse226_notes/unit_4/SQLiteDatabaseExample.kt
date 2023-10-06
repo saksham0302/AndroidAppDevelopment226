@@ -15,10 +15,12 @@ class SQLiteDatabaseExample : AppCompatActivity() {
     private lateinit var name: EditText
     private lateinit var age: EditText
     private lateinit var salary: EditText
+
     private lateinit var submitData: Button
     private lateinit var retrieveData: Button
     private lateinit var updateData: Button
     private lateinit var deleteData: Button
+
     private lateinit var getId: TextView
     private lateinit var getName: TextView
     private lateinit var getAge: TextView
@@ -79,8 +81,10 @@ class SQLiteDatabaseExample : AppCompatActivity() {
             db.updateData(dataId, dataName, dataAge, dataSalary)
             Toast.makeText(this, "$dataName updated to database", Toast.LENGTH_SHORT).show()
 
+            id.text.clear()
             name.text.clear()
             age.text.clear()
+            salary.text.clear()
             displayData(getId, getName, getAge, getSalary)
         }
 
@@ -93,17 +97,20 @@ class SQLiteDatabaseExample : AppCompatActivity() {
             db.deleteData(dataId)
             Toast.makeText(this, "$dataId deleted from database", Toast.LENGTH_SHORT).show()
 
+            id.text.clear()
+            name.text.clear()
             age.text.clear()
+            salary.text.clear()
             displayData(getId, getName, getAge, getSalary)
         }
     }
 
     @SuppressLint("Range")
     private fun displayData(
-        getId: TextView,
-        getName: TextView,
-        getAge: TextView,
-        getSalary: TextView
+        tvId: TextView,
+        tvName: TextView,
+        tvAge: TextView,
+        tvSalary: TextView
     ) {
 
         val db = SQLiteDatabaseHelper(this, null)
@@ -113,27 +120,27 @@ class SQLiteDatabaseExample : AppCompatActivity() {
         // all names from our database
         // and add to name text view
         val cursor = db.getData()
-        getId.text = "Id\n\n"
-        getName.text = "Name\n\n"
-        getAge.text = "Age\n\n"
-        getSalary.text = "Salary\n\n"
+        tvId.text = "Id\n\n"
+        tvName.text = "Name\n\n"
+        tvAge.text = "Age\n\n"
+        tvSalary.text = "Salary\n\n"
 
         // moving the cursor to first position and
         // appending value in the text view
         cursor!!.moveToFirst()
-        getId.append(
+        tvId.append(
             cursor.getString(cursor.getColumnIndex(SQLiteDatabaseHelper.ID_COL))
                     + "\n"
         )
-        getName.append(
+        tvName.append(
             cursor.getString(cursor.getColumnIndex(SQLiteDatabaseHelper.NAME_COL))
                     + "\n"
         )
-        getAge.append(
+        tvAge.append(
             cursor.getString(cursor.getColumnIndex(SQLiteDatabaseHelper.AGE_COL))
                     + "\n"
         )
-        getSalary.append(
+        tvSalary.append(
             cursor.getString(cursor.getColumnIndex(SQLiteDatabaseHelper.SALARY_COL))
                     + "\n"
         )
@@ -142,19 +149,19 @@ class SQLiteDatabaseExample : AppCompatActivity() {
         // position and appending values
         while (cursor.moveToNext()) {
 
-            getId.append(
+            tvId.append(
                 cursor.getString(cursor.getColumnIndex(SQLiteDatabaseHelper.ID_COL))
                         + "\n"
             )
-            getName.append(
+            tvName.append(
                 cursor.getString(cursor.getColumnIndex(SQLiteDatabaseHelper.NAME_COL))
                         + "\n"
             )
-            getAge.append(
+            tvAge.append(
                 cursor.getString(cursor.getColumnIndex(SQLiteDatabaseHelper.AGE_COL))
                         + "\n"
             )
-            getSalary.append(
+            tvSalary.append(
                 cursor.getString(cursor.getColumnIndex(SQLiteDatabaseHelper.SALARY_COL))
                         + "\n"
             )

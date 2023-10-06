@@ -38,7 +38,7 @@ class SQLiteDatabaseHelper(context: Context, factory: SQLiteDatabase.CursorFacto
     override fun onCreate(db: SQLiteDatabase) {
 
         // SQLITE query with column names and its data type
-        val query = ("CREATE TABLE $TABLE_NAME" +
+        val query = ("CREATE TABLE $TABLE_NAME " +
                 "($ID_COL TEXT, $NAME_COL TEXT, $AGE_COL TEXT, $SALARY_COL TEXT)")
 
         //method for executing query
@@ -77,7 +77,6 @@ class SQLiteDatabaseHelper(context: Context, factory: SQLiteDatabase.CursorFacto
         val db = this.writableDatabase
         val values = ContentValues()
 
-        values.put(ID_COL, id)
         values.put(NAME_COL, name)
         values.put(AGE_COL, age)
         values.put(SALARY_COL, salary)
@@ -92,7 +91,7 @@ class SQLiteDatabaseHelper(context: Context, factory: SQLiteDatabase.CursorFacto
         val db = this.readableDatabase
 
         //returning a cursor to read data from the database
-        return db.rawQuery("SELECT * FROM $TABLE_NAME", null)
+        return db.rawQuery("SELECT * FROM $TABLE_NAME ORDER BY $ID_COL", null)
     }
 
     fun deleteData(id: String) {
