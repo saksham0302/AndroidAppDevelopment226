@@ -10,4 +10,5 @@ data class RoomDatabaseContact(
     val id: Long,
     val name: String,
     val phone: String,
+    val address: String,
 )

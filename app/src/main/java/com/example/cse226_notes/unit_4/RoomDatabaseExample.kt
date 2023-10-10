@@ -39,6 +39,7 @@ class RoomDatabaseExample : AppCompatActivity() {
             val id = view.findViewById<TextView>(R.id.idListItem).text.toString().toLong()
             val name = view.findViewById<TextView>(R.id.nameListItem).text.toString()
             val phone = view.findViewById<TextView>(R.id.noListItem).text.toString()
+            val address = view.findViewById<TextView>(R.id.addressListItem).text.toString()
 
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Edit")
@@ -53,20 +54,39 @@ class RoomDatabaseExample : AppCompatActivity() {
             linearLayout.addView(nameView)
             val phoneView = EditText(this)
             phoneView.setText(phone)
+            phoneView.maxWidth = 10
             linearLayout.addView(phoneView)
+            val addressView = EditText(this)
+            addressView.setText(address)
+            linearLayout.addView(addressView)
 
             builder.setView(linearLayout)
-            builder.setPositiveButton("Edit", DialogInterface.OnClickListener {
+            builder.setPositiveButton("Update", DialogInterface.OnClickListener {
 
                     dialog, which ->
+
                 val updateName = nameView.text.toString()
                 val updatePhone = phoneView.text.toString()
+                val updateAddress = addressView.text.toString()
                 GlobalScope.launch {
                     database.RoomDatabaseDao()
-                        .update(RoomDatabaseContact(id, updateName, updatePhone))
+                        .update(RoomDatabaseContact(id, updateName, updatePhone, updateAddress))
                 }
 
                 Toast.makeText(this, "Updated $updateName $updatePhone", Toast.LENGTH_SHORT).show()
+            })
+
+            builder.setNeutralButton("Delete", DialogInterface.OnClickListener {
+
+                    dialog, which ->
+
+                val updateName = nameView.text.toString()
+                val updatePhone = phoneView.text.toString()
+                val updateAddress = addressView.text.toString()
+                GlobalScope.launch {
+                    database.RoomDatabaseDao()
+                        .delete(RoomDatabaseContact(id, updateName, updatePhone, updateAddress))
+                }
             })
 
             builder.setNegativeButton("Cancel", DialogInterface.OnClickListener {
@@ -88,16 +108,25 @@ class RoomDatabaseExample : AppCompatActivity() {
         val add = findViewById<Button>(R.id.add)
         add.setOnClickListener {
 
-            val id = findViewById<EditText>(R.id.id).text.toString().toLong()
-            val name = findViewById<EditText>(R.id.name).text.toString()
-            val contact = findViewById<EditText>(R.id.contact).text.toString()
+            val id = findViewById<EditText>(R.id.id)
+            val name = findViewById<EditText>(R.id.name)
+            val contact = findViewById<EditText>(R.id.contact)
+            val address = findViewById<EditText>(R.id.address)
             GlobalScope.launch {
                 database.RoomDatabaseDao().insert(
                     RoomDatabaseContact(
-                        id, name, contact
+                        id.text.toString().toLong(),
+                        name.text.toString(),
+                        contact.text.toString(),
+                        address.text.toString()
                     )
                 )
             }
+
+            id.text.clear()
+            name.text.clear()
+            contact.text.clear()
+            address.text.clear()
         }
     }
 

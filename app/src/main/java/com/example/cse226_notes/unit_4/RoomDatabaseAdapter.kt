@@ -22,12 +22,14 @@ class RoomDatabaseAdapter(
         val name: TextView = view.findViewById(R.id.nameListItem)
         val id: TextView = view.findViewById(R.id.idListItem)
         val contact: TextView = view.findViewById(R.id.noListItem)
+        val address: TextView = view.findViewById(R.id.addressListItem)
 
         val mItem: RoomDatabaseContact = items[position]
         name.text = mItem.name
-        contact.text = mItem.phone.toString()
+        contact.text = mItem.phone
         id.text = mItem.id.toString()
-
+        address.text = mItem.address
+        
         return view
     }
 }

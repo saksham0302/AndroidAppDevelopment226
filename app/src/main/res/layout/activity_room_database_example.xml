@@ -36,6 +36,15 @@
         android:maxLength="10"
         android:textSize="25sp" />
 
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter your address"
+        android:inputType="textPersonName"
+        android:textSize="25sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
