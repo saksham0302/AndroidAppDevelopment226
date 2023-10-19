@@ -5,13 +5,13 @@ import android.os.Bundle
 import android.webkit.WebView
 import com.example.cse226_notes.R
 
-class WebViewExample : AppCompatActivity() {
+class StaticWebViewExample : AppCompatActivity() {
 
     private lateinit var webView: WebView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_web_view_example)
+        setContentView(R.layout.activity_static_web_view_example)
 
         webView = findViewById(R.id.webView)
 
