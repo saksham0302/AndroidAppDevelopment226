@@ -10,6 +10,8 @@
         android:name="android.permission.BATTERY_STATS"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -21,7 +23,7 @@
         android:theme="@style/Theme.CSE226Notes"
         tools:targetApi="31">
         <activity
-            android:name=".unit_5.DynamicWebViewExample"
+            android:name=".unit_5.CurrentLocationExample"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +31,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".unit_5.DynamicWebViewExample"
+            android:exported="false" />
         <activity
             android:name=".unit_5.StaticWebViewExample"
             android:exported="false" />
