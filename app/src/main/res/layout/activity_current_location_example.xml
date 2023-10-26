@@ -16,6 +16,15 @@
         android:layout_gravity="center"
         android:layout_margin="30dp" />
 
+    <Button
+        android:id="@+id/getCurrentLocationOnMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Current Location on Map"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:layout_margin="30dp" />
+
     <TextView
         android:id="@+id/tvLatitude"
         android:layout_width="wrap_content"

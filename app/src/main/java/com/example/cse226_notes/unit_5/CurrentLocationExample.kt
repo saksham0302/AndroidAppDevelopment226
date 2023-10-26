@@ -9,6 +9,7 @@ import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
@@ -23,7 +24,11 @@ import java.util.Locale
 
 class CurrentLocationExample : AppCompatActivity() {
 
+    private var latitudeValue: Double = 0.0
+    private var longitudeValue: Double = 0.0
+
     private lateinit var btnCurrentLocation: Button
+    private lateinit var btnCurrentLocationOnMap: Button
     private lateinit var tvLatitude: TextView
     private lateinit var tvLongitude: TextView
     private lateinit var tvCountry: TextView
@@ -38,6 +43,7 @@ class CurrentLocationExample : AppCompatActivity() {
         setContentView(R.layout.activity_current_location_example)
 
         btnCurrentLocation = findViewById(R.id.getCurrentLocation)
+        btnCurrentLocationOnMap = findViewById(R.id.getCurrentLocationOnMap)
         tvLatitude = findViewById(R.id.tvLatitude)
         tvLongitude = findViewById(R.id.tvLongitude)
         tvCountry = findViewById(R.id.tvCountry)
@@ -48,6 +54,10 @@ class CurrentLocationExample : AppCompatActivity() {
 
         btnCurrentLocation.setOnClickListener {
             getLocation()
+        }
+
+        btnCurrentLocationOnMap.setOnClickListener {
+            openMap()
         }
     }
 
@@ -69,6 +79,9 @@ class CurrentLocationExample : AppCompatActivity() {
                                 location.latitude, location.longitude,
                                 1
                             )!!
+
+                        latitudeValue = list[0].latitude
+                        longitudeValue = list[0].longitude
                         tvLatitude.text = "Latitude: ${list[0].latitude}"
                         tvLongitude.text = "Longitude: ${list[0].longitude}"
                         tvCountry.text = "Country Name: ${list[0].countryName}"
@@ -144,5 +157,13 @@ class CurrentLocationExample : AppCompatActivity() {
         super.onResume()
         if (checkPermissions())
             getLocation()
+    }
+
+    private fun openMap() {
+
+        val uri = Uri.parse("geo:$latitudeValue:$longitudeValue")
+        val mapIntent = Intent(Intent.ACTION_VIEW, uri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+        startActivity(mapIntent)
     }
 }
