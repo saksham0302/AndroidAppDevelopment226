@@ -161,7 +161,7 @@ class CurrentLocationExample : AppCompatActivity() {
 
     private fun openMap() {
 
-        val uri = Uri.parse("geo:$latitudeValue:$longitudeValue")
+        val uri = Uri.parse("geo:$latitudeValue,$longitudeValue")
         val mapIntent = Intent(Intent.ACTION_VIEW, uri)
         mapIntent.setPackage("com.google.android.apps.maps")
         startActivity(mapIntent)
