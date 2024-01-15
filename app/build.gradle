@@ -6,7 +6,8 @@ plugins {
 
 android {
     namespace 'com.example.cse226_notes'
-    compileSdk 33
+    compileSdk 34
+    // for truth use compile 34
 
     defaultConfig {
         applicationId "com.example.cse226_notes"
@@ -31,6 +32,13 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            merges += "META-INF/LICENSE.md"
+            merges += "META-INF/LICENSE-notice.md"
+        }
+    }
 }
 
 dependencies {
@@ -40,11 +48,16 @@ dependencies {
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.cardview:cardview:1.0.0'
+
     implementation 'org.junit.jupiter:junit-jupiter'
     implementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     implementation 'junit:junit:4.12'
-    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+
+    androidTestImplementation 'com.google.truth:truth:1.0.1'
+    testImplementation 'com.google.truth:truth:1.0.1'
+
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     def room_version = '2.5.2'
